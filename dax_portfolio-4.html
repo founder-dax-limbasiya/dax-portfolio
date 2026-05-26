@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Dax Limbasiya - Portfolio</title>
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --dark-clr: #081d2c;
+    --second-dark-clr: #112e42;
+    --text-clr: #f1f5f9;
+    --light-text-clr: #c9d9e8;
+    --global-clr: #0fbbff;
+    --btn-clr: #ff499e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+html {
+    overflow-x: hidden;
+    line-height: calc(1em + 0.5rem);
+}
+
+body {
+    font-family: "Jost", serif;
+    background: var(--dark-clr);
+    color: var(--text-clr);
+    line-height: 1.3;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+header {
+    width: 100%;
+    background: transparent;
+    z-index: 1000;
+    padding: 1.5rem 0;
+}
+
+.navbar {
+    padding: 0.5rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-clr);
+}
+
+.logo span {
+    color: var(--global-clr);
+}
+
+.navbar ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    position: relative;
+}
+
+header nav ul li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.navbar ul li a {
+    position: relative;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-left: 20px;
+    color: var(--text-clr);
+    transition: .3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    color: var(--global-clr);
+}
+
+header nav ul li a::after {
+    content: '';
+    position: absolute;
+    background: var(--global-clr);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: .3s;
+}
+
+header nav ul li a:hover::after,
+header nav ul li a.active::after {
+    width: 100%;
+}
+
+.cvbtn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: var(--btn-clr);
+    color: var(--text-clr);
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--btn-clr);
+    cursor: pointer;
+    transition: .5s;
+}
+
+.cvbtn:hover {
+    box-shadow: 0 0 5px var(--btn-clr), 0 0 10px var(--btn-clr), 0 0 15px var(--btn-clr);
+}
+
+section {
+    padding: 2% 10%;
+}
+
+.hero-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 10%;
+}
+
+.hero-image img {
+    height: 500px;
+    width: 500px;
+    min-width: 350px;
+    filter: drop-shadow(0 0 60px var(--global-clr));
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.hero-content h2 span {
+    color: var(--global-clr);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.social-icons a {
+    display: inline-flex;
+    font-size: 2rem;
+    background: transparent;
+    color: var(--global-clr);
+    transition: .5s;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    transform: translateY(-10px);
+    text-decoration: none;
+}
+
+.hero-btn {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 10rem;
+    height: 100%;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    color: var(--dark-clr);
+    background: var(--global-clr);
+    border: 2px solid var(--global-clr);
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.btn:hover {
+    color: var(--global-clr);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--global-clr);
+}
+
+.btn-outline::before {
+    background: var(--global-clr);
+}
+
+.btn-outline:hover {
+    color: var(--dark-clr);
+}
+
+.btn-whatsapp {
+    background: #25D366;
+    border-color: #25D366;
+    color: #fff;
+}
+
+.btn-whatsapp:hover {
+    color: #25D366;
+}
+
+.btn-whatsapp::before {
+    background: var(--dark-clr);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--dark-clr);
+    z-index: -1;
+    transition: .5s;
+}
+
+.btn:hover::before {
+    width: 100%;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.stats .stat {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-width: 200px;
+}
+
+.stats .stat:not(:last-child) {
+    border-right: 1px solid var(--light-text-clr);
+    padding-right: 5%;
+}
+
+.stats .stat h2 {
+    font-size: 3.5rem;
+    font-weight: 600;
+}
+
+.stats .stat span {
+    display: inline-block;
+    color: var(--light-text-clr);
+    font-size: 1.1rem;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 4rem 10%;
+    background-color: #006da011;
+}
+
+.skills-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #fff;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+}
+
+.skill-item {
+    background: #252729a1;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-item:hover {
+    border-color: #00e0ff;
+    transform: translateY(-5px);
+}
+
+.skill-item i {
+    font-size: 2rem;
+    color: #00e0ff;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* About Section */
+.about-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 4rem 10%;
+}
+
+.about-text {
+    max-width: 55%;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--light-text-clr);
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+}
+
+.about-image-wrap {
+    position: relative;
+}
+
+.about-image-circle {
+    width: 300px;
+    height: 300px;
+    border: 4px solid #00e0ff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 30px rgba(0,224,255,0.4);
+}
+
+.about-image-circle img {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Services */
+.my-services {
+    color: white;
+}
+
+.my-services h2 {
+    font-size: 3rem;
+    color: white;
+}
+
+.highlight {
+    color: #00e0ff;
+}
+
+.service-card {
+    background-color: #252729a1;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: #fff;
+}
+
+.service-card:hover {
+    border-color: #00e0ff;
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: #00e0ff;
+    margin-bottom: 20px;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.service-description {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: var(--light-text-clr);
+}
+
+/* Project cards */
+.project-card {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: #112e42;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    border-color: #00e0ff;
+    transform: translateY(-5px);
+}
+
+.project-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.project-label {
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+}
+
+/* Contact */
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+}
+
+.contact-info-item i {
+    font-size: 1.5rem;
+    color: #00e0ff;
+}
+
+.btn-primary {
+    background-color: #00e0ff;
+    border-color: #00e0ff;
+    box-shadow: 0 5px 15px rgba(0, 224, 255, 0.5);
+    color: #000;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: #00c4e0;
+    border-color: #00c4e0;
+    box-shadow: 0 5px 25px rgba(0, 224, 255, 0.7);
+    color: #000;
+}
+
+/* Footer */
+footer {
+    background: #06131e;
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--light-text-clr);
+    font-size: 0.95rem;
+    border-top: 1px solid #112e42;
+}
+
+footer span {
+    color: #00e0ff;
+}
+
+/* Animations */
+.navbar a,
+.navbar ul li {
+    opacity: 0;
+    animation: slideRight 1.5s ease-in-out forwards;
+    animation-delay: calc(0.2s * var(--i));
+    text-decoration: none;
+}
+
+@keyframes slideRight {
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+.hero-image-animation {
+    opacity: 0;
+    animation: zoomBounce 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes zoomBounce {
+    0% { opacity: 0; transform: scale(0.5) rotate(-40deg); }
+    50% { transform: scale(1.1) rotate(0); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.hero-content-animation > * {
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: calc(0.5s * var(--i));
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.stats-animation {
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
+
+@media (max-width: 900px) {
+    .hero-container, .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-content, .about-text {
+        max-width: 100%;
+    }
+    .hero-image img {
+        width: 320px;
+        height: 320px;
+        min-width: unset;
+    }
+    .hero-btn {
+        justify-content: center;
+    }
+    .social-icons {
+        justify-content: center;
+    }
+    .stats .stat:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid var(--light-text-clr);
+        padding-bottom: 1rem;
+    }
+    .navbar ul {
+        display: none;
+    }
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo" style="--i: 1;">Dax<span>.</span></a>
+            <ul>
+                <li style="--i: 2;"><a href="#home" class="active">Home</a></li>
+                <li style="--i: 3;"><a href="#about">About</a></li>
+                <li style="--i: 4;"><a href="#skills">Skills</a></li>
+                <li style="--i: 5;"><a href="#services">Services</a></li>
+                <li style="--i: 6;"><a href="#portfolio">Portfolio</a></li>
+                <li style="--i: 7;"><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="mailto:dakshlimbasiya07@gmail.com" class="cvbtn" style="--i: 8;">Let's Talk <i class="fa-solid fa-envelope"></i></a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-container">
+        <div class="hero-content hero-content-animation">
+            <h3 style="--i: 1;">Hello, I'm</h3>
+            <h1 style="--i: 2;">Dax Limbasiya</h1>
+            <h2 style="--i: 3;">And I'm a <span class="typing-text"></span></h2>
+            <p style="--i: 4;">
+                I build modern websites, mobile apps and smart automations that help businesses grow and save time.
+            </p>
+            <div class="social-icons" style="--i: 5;">
+                <a href="https://wa.me/919274254500" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="mailto:dakshlimbasiya07@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+919274254500"><i class="fa-solid fa-phone"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <div class="hero-btn" style="--i: 6;">
+                <a href="https://wa.me/919274254500" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp" style="margin-right:6px"></i> Let's Talk</a>
+                <a href="#portfolio" class="btn btn-outline">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-image hero-image-animation">
+            <img src="images/photo.png" alt="Dax Limbasiya">
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats stats-animation">
+        <div class="stat">
+            <h2>6+</h2>
+            <span>Projects<br>Completed</span>
+        </div>
+        <div class="stat">
+            <h2>2+</h2>
+            <span>Happy<br>Clients</span>
+        </div>
+        <div class="stat">
+            <h2>1+</h2>
+            <span>Years of<br>Experience</span>
+        </div>
+        <div class="stat">
+            <h2>∞</h2>
+            <span>Ideas &amp;<br>Passion</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section" style="background-color:#006da011;">
+        </div>
+        <div class="about-text">
+            <h2>About <span class="highlight">Me</span></h2>
+            <h3 style="color:#00e0ff; margin-bottom:1rem;">Web Developer &amp; AI Automation Expert</h3>
+            <p>
+                I'm Dax Limbasiya, a student web creator passionate about building premium digital experiences. I create modern websites, mobile apps, and automation systems designed to help businesses, educators, and creators build strong online presence and improve productivity.
+            </p>
+            <div class="hero-btn">
+                <a href="mailto:dakshlimbasiya07@gmail.com" class="btn"><i class="fa-solid fa-envelope" style="margin-right:6px"></i> Send Email</a>
+                <a href="https://wa.me/919274254500" class="btn btn-whatsapp" target="_blank"><i class="fa-brands fa-whatsapp" style="margin-right:6px"></i> WhatsApp Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <h2>My <span class="highlight">Skills</span></h2>
+        <div class="skills-grid">
+            <div class="skill-item"><i class="bi bi-code-slash"></i>Website Development</div>
+            <div class="skill-item"><i class="bi bi-phone"></i>App Development</div>
+            <div class="skill-item"><i class="bi bi-robot"></i>AI Agents</div>
+            <div class="skill-item"><i class="bi bi-gear-wide-connected"></i>Automation Systems</div>
+            <div class="skill-item"><i class="bi bi-palette"></i>UI/UX Design</div>
+            <div class="skill-item"><i class="bi bi-plug"></i>API Integrations</div>
+            <div class="skill-item"><i class="bi bi-briefcase"></i>Business Automation</div>
+            <div class="skill-item"><i class="bi bi-layout-wtf"></i>Responsive Design</div>
+            <div class="skill-item"><i class="bi bi-window"></i>Landing Pages</div>
+            <div class="skill-item"><i class="bi bi-person-badge"></i>Portfolio Websites</div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="my-services py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">My <span class="highlight">Services</span></h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center p-4">
+                        <div class="service-icon"><i class="bi bi-code-slash"></i></div>
+                        <h3 class="service-title">Web Development</h3>
+                        <p class="service-description">Modern, responsive websites built with clean code and stunning design — tailored to your brand and business goals.</p>
+                        <a href="https://wa.me/919274254500" class="btn btn-primary">Let's Talk</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center p-4">
+                        <div class="service-icon"><i class="bi bi-phone"></i></div>
+                        <h3 class="service-title">App Development</h3>
+                        <p class="service-description">Cross-platform mobile apps with smooth UI/UX, robust functionality, and seamless performance on all devices.</p>
+                        <a href="https://wa.me/919274254500" class="btn btn-primary">Let's Talk</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-card text-center p-4">
+                        <div class="service-icon"><i class="bi bi-robot"></i></div>
+                        <h3 class="service-title">AI &amp; Automation</h3>
+                        <p class="service-description">Smart AI agents and automation systems that save time, reduce manual work, and scale your operations effortlessly.</p>
+                        <a href="https://wa.me/919274254500" class="btn btn-primary">Let's Talk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="container py-5">
+        <h2 class="text-center mb-5" style="color:#fff; font-size:2.5rem;">
+            Latest <span style="color:#00D1FF;">Projects</span>
+        </h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Business Dashboard UI">
+                    <div class="project-label">📊 Business Dashboard UI</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Mobile App Interface">
+                    <div class="project-label">📱 Mobile App Interface</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=600&q=80" alt="Developer Workspace">
+                    <div class="project-label">💻 Developer Workspace</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80" alt="AI Automation System">
+                    <div class="project-label">🤖 AI Automation System</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="SaaS Landing Page">
+                    <div class="project-label">🚀 SaaS Landing Page</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="API Integration">
+                    <div class="project-label">⚡ API Integration Project</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container py-5">
+        <h2 class="text-center mb-5" style="color:#fff; font-size:2.5rem;">
+            Contact <span style="color:#00D1FF;">Me!</span>
+        </h2>
+        <div class="row g-5">
+            <div class="col-md-5">
+                <h4 style="color:#00e0ff; margin-bottom:1.5rem;">Get In Touch</h4>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <a href="tel:+919274254500" style="color:#f1f5f9;">+91 9274254500</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <a href="mailto:dakshlimbasiya07@gmail.com" style="color:#f1f5f9;">dakshlimbasiya07@gmail.com</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <a href="https://wa.me/919274254500" target="_blank" style="color:#f1f5f9;">+91 9274254500</a>
+                </div>
+                <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+                    <a href="https://wa.me/919274254500" class="btn btn-whatsapp" target="_blank" style="text-decoration:none;">
+                        <i class="fa-brands fa-whatsapp" style="margin-right:6px"></i> Let's Talk on WhatsApp
+                    </a>
+                    <a href="mailto:dakshlimbasiya07@gmail.com" class="btn" style="text-decoration:none;">
+                        <i class="fa-solid fa-envelope" style="margin-right:6px"></i> Send Email
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control bg-dark text-white border-0 p-3" placeholder="Full Name">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control bg-dark text-white border-0 p-3" placeholder="Email Address">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control bg-dark text-white border-0 p-3" placeholder="Phone Number">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control bg-dark text-white border-0 p-3" placeholder="Subject">
+                    </div>
+                    <div class="col-12">
+                        <textarea class="form-control bg-dark text-white border-0 p-3" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary px-5 py-2" onclick="window.location.href='mailto:dakshlimbasiya07@gmail.com'">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ by <span>Dax Limbasiya</span> &nbsp;|&nbsp; +91 9274254500 &nbsp;|&nbsp; dakshlimbasiya07@gmail.com</p>
+    </footer>
+
+</body>
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const typed = new Typed('.typing-text', {
+        strings: ['Web Developer', 'App Builder', 'AI Automation Expert'],
+        typeSpeed: 70,
+        backSpeed: 70,
+        backDelay: 1000,
+        loop: true,
+    });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+</script>
+
+</html>
